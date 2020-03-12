@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring_cloud_provider.mapper.StudentMapper">
+
+    <select id="selectStudents" resultType="model.entity.Students">
+        select * from student where sid=#{sid} and pwd=#{pwd}
+    </select>
+    <delete id="del">
+        delete from student where sid=#{sid}
+    </delete>
+    <insert id="add">
+        INSERT INTO student (`sid`,`sname`,`xuefen`)VALUES(#{sid},#{sname},#{xuefen})
+    </insert>
+    <update id="update">
+        UPDATE student SET `sname`=#{sname} , `sid`=#{sid} , `xuefen`=#{xuefen} WHERE `sid`=#{sid}
+    </update>
+    <select id="selectAll" resultType="model.entity.Students">
+        select * from students.student LIMIT #{map.index},#{map.limit}
+    </select>
+    <select id="selectAllCount" resultType="java.lang.Long">
+        select COUNT(*) from students.student
+    </select>
+
+
+</mapper>
